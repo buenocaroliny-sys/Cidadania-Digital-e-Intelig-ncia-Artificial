@@ -3,80 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Cidadania Digital: Deepfakes e Desinformação</title>
+    <title>Cidadania Digital & IA: Combate às Deepfakes</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
-    <header class="main-header">
+    <header>
         <div class="header-container">
-            <h1>Cidadania Digital & IA</h1>
+            <h1>Cidadania Digital 2026</h1>
             <button id="toggle-dark-mode" class="btn-accessibility">Alternar Modo Escuro</button>
         </div>
     </header>
 
-    <!-- Conteúdo Principal Semântico -->
     <main>
-        
         <!-- Seção 1: Introdução ao Tema -->
-        <section id="introducao" class="section-card">
-            <h2>O Impacto das Deepfakes</h2>
-            <p>As mídias manipuladas por Inteligência Artificial, conhecidas como <strong>deepfakes</strong>, alteram rostos e vozes com precisão assustadora. Elas representam um risco real para a democracia, segurança pessoal e a verdade na internet. Desenvolver o senso crítico digital é o primeiro passo para combater a desinformação automatizada.</p>
+        <section class="hero-section">
+            <h2>O Impacto das Deepfakes e da Desinformação</h2>
+            <p>A Inteligência Artificial transformou a criação de mídias. O uso indevido de deepfakes gera desinformação automatizada, ameaçando a verdade e a segurança digital na nossa sociedade.</p>
         </section>
 
-        <!-- Seção 2: Como Identificar (Guia Prático) -->
-        <section id="guia-identificacao" class="section-card">
-            <h2>Como Identificar Mídias Manipuladas?</h2>
-            <p>Fique atento aos pequenos detalhes que os algoritmos de IA ainda têm dificuldade de recriar perfeitamente:</p>
-            <ul class="lista-dicas">
-                <li>Piscar de olhos não natural ou ausente.</li>
-                <li>Sincronia labial desalinhada com o áudio.</li>
-                <li>Falhas e borrões nas bordas do rosto ou orelhas.</li>
-                <li>Iluminação e sombras inconsistentes no cenário.</li>
-            </ul>
-        </section>
-
-        <!-- Seção 3: Interatividade (Quiz Anti-Desinformação) -->
-        <section id="quiz-section" class="section-card">
-            <h2>Quiz Anti-Desinformação</h2>
-            <p>Instruções: Teste seus conhecimentos sobre a veracidade das mídias digitais atuais.</p>
+        <!-- Seção 2: O Quiz Interativo -->
+        <section class="quiz-section">
+            <h3>Desafio: Você sabe identificar uma Deepfake?</h3>
+            <p>Analise a afirmação abaixo e teste seus conhecimentos de cidadania digital.</p>
             
-            <form id="quiz-form">
-                <div class="quiz-question">
-                    <label for="q1"><strong>Pergunta 1:</strong> Se um vídeo parece altamente realista e mostra uma figura pública falando algo absurdo, qual deve ser sua primeira ação?</label>
-                    <select id="q1" required>
-                        <option value="">-- Selecione uma resposta --</option>
-                        <option value="errado-compartilhar">Compartilhar imediatamente nos grupos de mensagem.</option>
-                        <option value="correto">Desconfiar e verificar em agências de checagem confiáveis.</option>
-                        <option value="errado-ignorar">Acreditar piamente, pois vídeos não podem ser editados.</option>
-                    </select>
-                </div>
-
-                <div class="quiz-question">
-                    <label for="q2"><strong>Pergunta 2:</strong> O termo "Deepfake" refere-se a quais tecnologias?</label>
-                    <select id="q2" required>
-                        <option value="">-- Selecione uma resposta --</option>
-                        <option value="errado-filtros">Apenas filtros simples de redes sociais.</option>
-                        <option value="errado-fotos">Montagens manuais feitas no Photoshop.</option>
-                        <option value="correto">Vídeos, áudios ou fotos adulterados por Inteligência Artificial profunda.</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn-submit">Enviar Respostas</button>
-            </form>
-
-            <!-- Div manipulada dinamicamente pelo JS -->
-            <div id="quiz-result" class="result-box hidden"></div>
+            <div class="quiz-card">
+                <p class="quiz-question">"Deepfakes são apenas vídeos engraçados de paródia e não representam riscos reais para eleições ou segurança de pessoas comuns."</p>
+                
+                <form id="quiz-form">
+                    <div class="options-container">
+                        <label class="option-label">
+                            <input type="radio" name="quiz-answer" value="verdadeiro" required>
+                            Verdadeiro (É inofensivo)
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="quiz-answer" value="falso">
+                            Falso (É perigoso)
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-submit">Verificar Resposta</button>
+                </form>
+                
+                <!-- Div manipulada dinamicamente pelo JS -->
+                <div id="quiz-feedback" class="feedback hidden"></div>
+            </div>
         </section>
 
+        <!-- Seção 3: Dicas de Identificação -->
+        <section class="tips-section">
+            <h3>Como identificar mídias manipuladas por IA?</h3>
+            <div class="grid-tips">
+                <div class="tip-card">
+                    <h4>Piscar de olhos instintivo</h4>
+                    <p>Muitas IAs falham em reproduzir o ritmo natural do piscar de olhos humano.</p>
+                </div>
+                <div class="tip-card">
+                    <h4>Inconsistências de iluminação</h4>
+                    <p>Fique atento a sombras desalinhadas no rosto e reflexos duplos nos olhos.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Rodapé Semântico -->
-    <footer class="main-footer">
-        <p>&copy; 2026 Portal Cidadania Digital. Desenvolvido para fins educacionais.</p>
+    <footer>
+        <p>&copy; 2026 - Portal de Conscientização Comunitária. Projeto de Educação Digital e IA.</p>
     </footer>
 
     <script src="js/script.js"></script>
 </body>
 </html>
+
