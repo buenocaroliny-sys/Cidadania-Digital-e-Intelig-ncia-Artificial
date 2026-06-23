@@ -1,56 +1,42 @@
-/**
- * Script do Portal de Cidadania Digital 2026
- * Funcionalidades: Validador de Quiz e Modo Escuro (Acessibilidade)
- */
-
+// Aguarda o DOM carregar completamente para evitar erros de execução
 document.addEventListener("DOMContentLoaded", () => {
     
-    // ====================================
-    // FUNDAÇÃO: SELEÇÃO DE ELEMENTOS DO DOM
-    // ====================================
-    const toggleDarkModeButton = document.getElementById("toggle-dark-mode");
-    const quizForm = document.getElementById("quiz-form");
-    const quizResult = document.getElementById("quiz-result");
-
-    // ====================================
-    // RECIPROCIDADE: BOTÃO MODO ESCURO
-    // ====================================
-    toggleDarkModeButton.addEventListener("click", () => {
-        // Alterna a classe no body do HTML
+    // --- Recurso 1: Alternador de Modo Escuro (Acessibilidade) ---
+    const darkModeBtn = document.getElementById("toggle-dark-mode");
+    
+    darkModeBtn.addEventListener("click", () => {
+        // Altera a classe no body para disparar as variáveis CSS modificadas
         document.body.classList.toggle("dark-mode");
     });
 
-    // ====================================
-    // LÓGICA E PROCESSAMENTO: VALIDAÇÃO DO QUIZ
-    // ====================================
+    // --- Recurso 2: Validador Dinâmico do Quiz de Desinformação ---
+    const quizForm = document.getElementById("quiz-form");
+    const feedbackDiv = document.getElementById("quiz-feedback");
+
     quizForm.addEventListener("submit", (event) => {
-        // Impede o recarregamento automático da página
+        // Impede o recarregamento padrão da página ao enviar o formulário
         event.preventDefault();
 
-        // Captura e armazena as variáveis de resposta do usuário
-        const respostaQuestao1 = document.getElementById("q1").value;
-        const respostaQuestao2 = document.getElementById("q2").value;
+        // Captura a opção selecionada pelo usuário
+        const selectedOption = document.querySelector('input[name="quiz-answer"]:checked');
+        
+        // Valida se há uma resposta e processa a lógica de acerto/erro
+        if (selectedOption) {
+            const userAnswer = selectedOption.value;
+            
+            // Limpa as classes de feedback anteriores
+            feedbackDiv.classList.remove("hidden", "correct", "incorrect");
 
-        // Variável de controle de acertos
-        let acertos = 0;
-
-        // Processa os dados antes de exibir na tela
-        if (respostaQuestao1 === "correto") {
-            acertos++;
-        }
-        if (respostaQuestao2 === "correto") {
-            acertos++;
-        }
-
-        // Exibe o resultado dinamicamente alterando classes e textos do DOM
-        quizResult.classList.remove("hidden", "success", "error");
-
-        if (acertos === 2) {
-            quizResult.textContent = `Parabéns! Você acertou todas as questões (${acertos}/2). Você sabe se proteger contra a desinformação!`;
-            quizResult.classList.add("success");
-        } else {
-            quizResult.textContent = `Você acertou ${acertos} de 2 questões. Revise o guia acima para identificar deepfakes de forma mais eficiente!`;
-            quizResult.classList.add("error");
+            if (userAnswer === "falso") {
+                // Manipulação dinâmica do DOM para resposta correta
+                feedbackDiv.textContent = "Correto! As deepfakes representam um perigo real à sociedade, podendo fraudar identidades e espalhar mentiras em massa.";
+                feedbackDiv.classList.add("correct");
+            } else {
+                // Manipulação dinâmica do DOM para resposta incorreta
+                feedbackDiv.textContent = "Incorreto. Embora existam sátiras, o uso nocivo automatizado espalha pânico e mentiras perigosas.";
+                feedbackDiv.classList.add("incorrect");
+            }
         }
     });
 });
+
