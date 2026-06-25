@@ -1,15 +1,15 @@
-/* Definição da Paleta de Cores de Tecnologia e Segurança */
+/* Paleta de Cores Focada em Tecnologia e Segurança */
 :root {
     --cor-fundo-principal: #f0f4f8;
     --cor-fundo-bloco: #ffffff;
     --cor-texto: #1a202c;
-    --cor-primaria: #1a365d; /* Azul Escuro Institucional */
-    --cor-secundaria: #2b6cb0; /* Azul Alerta */
-    --cor-sucesso: #2f855a; /* Verde Atendido */
+    --cor-primaria: #1a365d; 
+    --cor-secundaria: #2b6cb0; 
+    --cor-sucesso: #2f855a; 
     --cor-carta-frente: #4a5568;
 }
 
-/* Alteração Dinâmica para Modo Escuro */
+/* Ativação do Modo Escuro pelo Botão JS */
 body.dark-mode {
     --cor-fundo-principal: #1a202c;
     --cor-fundo-bloco: #2d3748;
@@ -17,7 +17,6 @@ body.dark-mode {
     --cor-primaria: #90cdf4;
     --cor-secundaria: #63b3ed;
     --cor-sucesso: #48bb78;
-    --cor-carta-frente: #4a5568;
 }
 
 * {
@@ -31,7 +30,8 @@ body {
     background-color: var(--cor-fundo-principal);
     color: var(--cor-texto);
     line-height: 1.6;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+    transition: background-color 0.3s ease;
 }
 
 header {
@@ -81,7 +81,6 @@ h2 {
     margin-bottom: 15px;
 }
 
-/* Tabuleiro com Técnicas Flexbox */
 .placar {
     text-align: center;
     font-size: 1.2rem;
@@ -89,16 +88,18 @@ h2 {
     margin-bottom: 20px;
 }
 
+/* Tabuleiro - Técnicas Flexbox (Subcategoria A) */
 #tabuleiro-memoria {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    margin-top: 15px;
 }
 
-/* Cartas do Jogo */
+/* Cartas Interativas */
 .carta {
-    width: calc(50% - 15px); /* Layout padrão de duas colunas */
+    width: calc(50% - 15px); /* Layout mobile: duas colunas */
     height: 140px;
     background-color: var(--cor-carta-frente);
     color: #ffffff;
@@ -129,7 +130,7 @@ h2 {
     transform: none;
 }
 
-/* Formulário Interativo */
+/* Formulário */
 .grupo-campo {
     margin-bottom: 15px;
 }
@@ -158,10 +159,7 @@ input {
     cursor: pointer;
     font-size: 1rem;
     width: 100%;
-}
-
-#btn-enviar:hover {
-    filter: brightness(0.9);
+    font-weight: bold;
 }
 
 .escondido {
@@ -185,10 +183,10 @@ footer {
     font-size: 0.85rem;
 }
 
-/* 📱 Ajustes de Layout para Telas Maiores (Media Queries) */
+/* Responsividade Avançada via Media Queries (Subcategoria B) */
 @media (min-width: 600px) {
     .carta {
-        width: calc(25% - 15px); /* Divide em 4 colunas em desktops e tablets */
+        width: calc(25% - 15px); /* Transforma em 4 colunas em telas maiores */
         height: 160px;
         font-size: 0.9rem;
     }
