@@ -1,42 +1,21 @@
-// Aguarda o DOM carregar completamente para evitar erros de execução
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- Recurso 1: Alternador de Modo Escuro (Acessibilidade) ---
-    const darkModeBtn = document.getElementById("toggle-dark-mode");
-    
-    darkModeBtn.addEventListener("click", () => {
-        // Altera a classe no body para disparar as variáveis CSS modificadas
-        document.body.classList.toggle("dark-mode");
-    });
+# Portal Cidadania Digital: Combate à Desinformação e Deepfakes 🛡️
 
-    // --- Recurso 2: Validador Dinâmico do Quiz de Desinformação ---
-    const quizForm = document.getElementById("quiz-form");
-    const feedbackDiv = document.getElementById("quiz-feedback");
+Projeto final construído para a disciplina de Educação Digital e IA do Ensino Médio, com foco em conscientização comunitária.
 
-    quizForm.addEventListener("submit", (event) => {
-        // Impede o recarregamento padrão da página ao enviar o formulário
-        event.preventDefault();
+## 🎯 Objetivo Geral
+Disseminar conhecimentos cruciais sobre identificação de mídias artificiais manipuladas por Inteligência Artificial (deepfakes). O portal utiliza a gamificação como mecanismo principal de ensino por meio de um **Jogo da Memória Educativo**, onde o usuário conecta os sinais de erro técnico das IAs às suas respectivas contrapartidas explicativas.
 
-        // Captura a opção selecionada pelo usuário
-        const selectedOption = document.querySelector('input[name="quiz-answer"]:checked');
-        
-        // Valida se há uma resposta e processa a lógica de acerto/erro
-        if (selectedOption) {
-            const userAnswer = selectedOption.value;
-            
-            // Limpa as classes de feedback anteriores
-            feedbackDiv.classList.remove("hidden", "correct", "incorrect");
+## 🛠️ Detalhes de Implementação
+- **HTML5 Semântico**: Uso estrito de divisões lógicas estruturadas (`header`, `main`, `section`, `footer` e `form`).
+- **CSS3 Flexbox & Grid**: Sistema flexível autoajustável e responsivo adaptado para 2 colunas em dispositivos móveis e 4 colunas em monitores desktop usando `@media`.
+- **JavaScript Funcional**: Lógica pura para gerenciamento do tabuleiro, contagem dinâmica de pontos no placar, limpeza de estados e alteração de classes para o Modo Escuro.
 
-            if (userAnswer === "falso") {
-                // Manipulação dinâmica do DOM para resposta correta
-                feedbackDiv.textContent = "Correto! As deepfakes representam um perigo real à sociedade, podendo fraudar identidades e espalhar mentiras em massa.";
-                feedbackDiv.classList.add("correct");
-            } else {
-                // Manipulação dinâmica do DOM para resposta incorreta
-                feedbackDiv.textContent = "Incorreto. Embora existam sátiras, o uso nocivo automatizado espalha pânico e mentiras perigosas.";
-                feedbackDiv.classList.add("incorrect");
-            }
-        }
-    });
-});
+## 🤖 Declaração de Uso de Ferramentas de IA
+Conforme as exigências éticas do projeto, o código base de ordenação aleatória e a transição lógica de reversão de cartas foram otimizados através de interações estruturadas.
 
+**Prompts de Orientação Empregados:**
+1. *"Gere um algoritmo básico de embaralhar arrays em JavaScript usando Math.random que possa ser acoplado a um jogo da memória."*
+2. *"Escreva CSS utilizando variáveis personalizadas (:root) que permitam inverter o contraste de cores de fundo de um formulário com a adição de uma classe no body."*
+
+## 🏷️ Tags do Repositório
+`#cidadaniadigital2026`
