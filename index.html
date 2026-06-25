@@ -3,54 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Cidadania Digital: Combate às Deepfakes</title>
+    <title>Portal Cidadania Digital - Jogo da Memória</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <header>
         <h1>Cidadania Digital & IA</h1>
-        <p>Desvendando as Deepfakes e a Desinformação</p>
-        <button id="toggle-dark-mode" aria-label="Alternar modo escuro">🌓 Modo Escuro</button>
+        <p>Aprenda a detectar Deepfakes e combater a desinformação jogando!</p>
+        <button id="toggle-dark-mode" aria-label="Alternar tema de cores">Acessibilidade: Modo Escuro</button>
     </header>
 
     <main>
-        <section id="sobre">
-            <h2>O Desafio das Mídias Manipuladas</h2>
-            <p>Deepfakes são vídeos, áudios ou imagens gerados por Inteligência Artificial para simular a voz e o rosto de pessoas reais. Aprender a identificá-las é fundamental para a saúde da nossa sociedade digital.</p>
+        <section id="introducao">
+            <h2>Detetive Digital: O Desafio</h2>
+            <p>Vídeos falsos e áudios manipulados por Inteligência Artificial (deepfakes) espalham mentiras rapidamente. Encontre os pares corretos combinando o <strong>Sinal de Alerta</strong> com a sua respectiva <strong>Solução ou Explicação</strong>.</p>
         </section>
 
-        <section id="jogo-container">
-            <h2>Jogo da Memória: Detetive Digital</h2>
-            <p>Combine a <strong>Ameaça/Técnica</strong> com a sua <strong>Solução/Forma de Detecção</strong> correspondente!</p>
-            
+        <section id="jogo">
             <div class="placar">
-                <span>Acertos: <strong id="contador-acertos">0</strong>/4</span>
+                <p>Pontuação: <span id="pontos">0</span> de 4 acertos</p>
             </div>
-
-            <div class="tabuleiro-memoria" id="tabuleiro">
-                <!-- As cartas serão geradas dinamicamente via JavaScript -->
-            </div>
+            
+            <!-- O tabuleiro flexbox receberá as cartas geradas pelo script.js -->
+            <div id="tabuleiro-memoria"></div>
         </section>
 
-        <section id="contato">
-            <h2>Denuncie uma Desinformação</h2>
-            <form id="form-denuncia">
-                <div class="campo">
-                    <label for="nome">Seu Nome:</label>
-                    <input type="text" id="nome" required placeholder="Digite seu nome">
+        <section id="denuncia">
+            <h2>Canais de Proteção Coletiva</h2>
+            <p>Encontrou um conteúdo suspeito na internet? Envie o link para análise de nossa comunidade.</p>
+            
+            <form id="form-contato">
+                <div class="grupo-campo">
+                    <label for="nome-usuario">Seu Nome:</label>
+                    <input type="text" id="nome-usuario" required placeholder="Ex: Maria Silva">
                 </div>
-                <div class="campo">
-                    <label for="link">Link da Mídia Suspeita:</label>
-                    <input type="url" id="link" required placeholder="https://...">
+                <div class="grupo-campo">
+                    <label for="link-suspeito">Link da Mídia Suspeita:</label>
+                    <input type="url" id="link-suspeito" required placeholder="https://exemplo.com">
                 </div>
-                <button type="submit" id="btn-enviar">Enviar Denúncia</button>
+                <button type="submit" id="btn-enviar">Registrar Alerta</button>
             </form>
-            <div id="mensagem-feedback" class="escondido"></div>
+            <p id="mensagem-sucesso" class="escondido"></p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Projeto Cidadania Digital. Conteúdo 100% Autoral.</p>
+        <p>&copy; 2026 Portal de Conscientização Comunitária. Conteúdo 100% Autoral.</p>
     </footer>
 
     <script src="js/script.js"></script>
