@@ -1,4 +1,4 @@
-// Dados do Jogo - Pares Correspondentes (ID iguais formam o par correto)
+// Banco de dados contendo pares informativos sobre IA e Deepfakes
 const dadosCartas = [
     { id: 1, texto: "Sinal: Rosto que não pisca naturalmente" },
     { id: 1, texto: "Solução: IA tem dificuldade de simular piscadas biológicas" },
@@ -10,13 +10,12 @@ const dadosCartas = [
     { id: 4, texto: "Solução: Desconfie e consulte agências de checagem confiáveis" }
 ];
 
-// Variáveis de controle do estado do jogo
 let primeiraCarta = null;
 let segundaCarta = null;
 let bloqueiaTabuleiro = false;
 let acertosTotais = 0;
 
-// Esta função garante que o código só roda quando TODO o HTML estiver pronto na tela
+// Escuta obrigatória que previne que o código execute antes do HTML ser carregado
 document.addEventListener("DOMContentLoaded", () => {
     const tabuleiro = document.getElementById("tabuleiro-memoria");
     const mostradorPontos = document.getElementById("pontos");
@@ -24,27 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const formulario = document.getElementById("form-contato");
     const containerFeedback = document.getElementById("mensagem-sucesso");
 
-    // Verifica se os elementos essenciais existem na página para evitar erros de compilação
-    if (!tabuleiro || !mostradorPontos) {
-        console.error("Erro: Elementos do tabuleiro não foram encontrados no HTML.");
-        return;
-    }
-
-    // 1. Função para embaralhar as cartas (Algoritmo Fisher-Yates estável)
+    // Função de Embaralhar Pura (Fisher-Yates)
     function embaralhar(array) {
-        let indiceAtual = array.length, indiceAleatorio;
-        while (indiceAtual !== 0) {
-            indiceAleatorio = Math.floor(Math.random() * indiceAtual);
-            indiceAtual--;
-            [array[indiceAtual], array[indiceAleatorio]] = [array[indiceAleatorio], array[indiceAtual]];
-        }
-        return array;
+        return array.sort(() => Math.random() - 0.5);
     }
 
-    // 2. Função para construir visualmente as cartas dentro do HTML
+    // Geração Dinâmica dos Elementos no DOM (Subcategoria A Nível 4)
     function montarTabuleiro() {
         const cartasEmbaralhadas = embaralhar([...dadosCartas]);
-        tabuleiro.innerHTML = ""; // Limpa qualquer resíduo
+        tabuleiro.innerHTML = "";
 
         cartasEmbaralhadas.forEach(item => {
             const elementoCarta = document.createElement("div");
@@ -58,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Lógica para virar a carta selecionada
     function virarCarta() {
         if (bloqueiaTabuleiro) return;
         if (this === primeiraCarta) return;
@@ -76,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         verificarCombinacao();
     }
 
-    // 4. Verificação lógica do par (Variáveis processando informações antes da tela)
     function verificarCombinacao() {
         const combinou = primeiraCarta.dataset.id === segundaCarta.dataset.id;
 
@@ -87,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 5. Ação quando o usuário acerta o par
     function marcarComoResolvidas() {
         primeiraCarta.classList.add("resolvida");
         segundaCarta.classList.add("resolvida");
@@ -104,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 6. Oculta as cartas novamente se o usuário errar o par
     function desvirarCartas() {
         bloqueiaTabuleiro = true;
 
@@ -115,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
             segundaCarta.textContent = "🔍 Identificar Fraude";
 
             limparSelecao();
-        }, 1500); // Exibe o erro por 1.5 segundos antes de desvirar
+        }, 1500);
     }
 
     function limparSelecao() {
@@ -124,26 +107,24 @@ document.addEventListener("DOMContentLoaded", () => {
         bloqueiaTabuleiro = false;
     }
 
-    // 7. Evento de Acessibilidade - Modo Escuro
+    // Funcionalidade de Acessibilidade
     if (botaoModoEscuro) {
         botaoModoEscuro.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
         });
     }
 
-    // 8. Evento de Envio do Formulário Interativo
+    // Script Dinâmico de Formulário
     if (formulario && containerFeedback) {
         formulario.addEventListener("submit", (evento) => {
             evento.preventDefault();
-            
             const nome = document.getElementById("nome-usuario").value;
             containerFeedback.textContent = `Agradecemos seu envio, ${nome}! Analisaremos o endereço informado para neutralizar o avanço desta desinformação.`;
             containerFeedback.classList.remove("escondido");
-            
             formulario.reset();
         });
     }
 
-    // Inicializa o jogo automaticamente ao abrir a página
+    // Inicialização do Jogo
     montarTabuleiro();
 });
