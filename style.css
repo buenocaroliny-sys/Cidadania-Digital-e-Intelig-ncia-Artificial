@@ -1,20 +1,23 @@
-/* Variáveis de Cores (Identidade Tecnológica/Segurança) */
+/* Definição da Paleta de Cores de Tecnologia e Segurança */
 :root {
-    --bg-principal: #f4f7f6;
-    --bg-card: #ffffff;
-    --texto: #1a1a1a;
-    --primaria: #0f4c81; /* Azul Segurança */
-    --secundaria: #17b890; /* Verde Validação */
-    --transicao: all 0.3s ease;
+    --cor-fundo-principal: #f0f4f8;
+    --cor-fundo-bloco: #ffffff;
+    --cor-texto: #1a202c;
+    --cor-primaria: #1a365d; /* Azul Escuro Institucional */
+    --cor-secundaria: #2b6cb0; /* Azul Alerta */
+    --cor-sucesso: #2f855a; /* Verde Atendido */
+    --cor-carta-frente: #4a5568;
 }
 
-/* Modo Escuro */
+/* Alteração Dinâmica para Modo Escuro */
 body.dark-mode {
-    --bg-principal: #121212;
-    --bg-card: #1e1e1e;
-    --texto: #e0e0e0;
-    --primaria: #3700b3;
-    --secundaria: #03dac6;
+    --cor-fundo-principal: #1a202c;
+    --cor-fundo-bloco: #2d3748;
+    --cor-texto: #edf2f7;
+    --cor-primaria: #90cdf4;
+    --cor-secundaria: #63b3ed;
+    --cor-sucesso: #48bb78;
+    --cor-carta-frente: #4a5568;
 }
 
 * {
@@ -24,166 +27,169 @@ body.dark-mode {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-principal);
-    color: var(--texto);
-    transition: var(--transicao);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto);
     line-height: 1.6;
+    padding-bottom: 20px;
 }
 
 header {
-    background-color: var(--primaria);
-    color: white;
-    padding: 2rem;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 30px 20px;
     text-align: center;
-    position: relative;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 #toggle-dark-mode {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.5rem 1rem;
+    margin-top: 15px;
+    padding: 8px 16px;
     cursor: pointer;
-    background: transparent;
-    border: 2px solid white;
-    color: white;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
     border-radius: 4px;
-    transition: var(--transicao);
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
 #toggle-dark-mode:hover {
-    background: white;
-    color: var(--primaria);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 main {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
 section {
-    background: var(--bg-card);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    background-color: var(--cor-fundo-bloco);
+    margin-bottom: 25px;
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    margin-bottom: 1rem;
-    color: var(--primaria);
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
 }
 
-/* Estilização do Jogo da Memória */
+/* Tabuleiro com Técnicas Flexbox */
 .placar {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
     text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.tabuleiro-memoria {
+#tabuleiro-memoria {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
 }
 
-.carta-memoria {
-    width: calc(25% - 10px);
-    height: 120px;
-    background-color: var(--primaria);
-    color: white;
+/* Cartas do Jogo */
+.carta {
+    width: calc(50% - 15px); /* Layout padrão de duas colunas */
+    height: 140px;
+    background-color: var(--cor-carta-frente);
+    color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px;
-    font-size: 0.9rem;
+    padding: 15px;
+    font-size: 0.95rem;
     font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transicao);
     user-select: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.carta-memoria:hover {
-    transform: scale(1.03);
-    opacity: 0.9;
+.carta:hover {
+    transform: scale(1.02);
 }
 
-.carta-memoria.virada {
-    background-color: var(--secundaria);
-    color: #1a1a1a;
+.carta.virada {
+    background-color: var(--cor-secundaria);
 }
 
-.carta-memoria.escondida {
-    visibility: hidden;
-    opacity: 0;
+.carta.resolvida {
+    background-color: var(--cor-sucesso);
+    cursor: default;
+    transform: none;
 }
 
-/* Formulário */
-.campo {
-    margin-bottom: 1rem;
+/* Formulário Interativo */
+.grupo-campo {
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border: 1px solid #cbd5e0;
     border-radius: 4px;
+    background-color: var(--cor-fundo-principal);
+    color: var(--cor-texto);
 }
 
-button[type="submit"] {
-    background-color: var(--primaria);
+#btn-enviar {
+    background-color: var(--cor-secundaria);
     color: white;
+    padding: 12px 20px;
     border: none;
-    padding: 0.8rem 1.5rem;
-    cursor: pointer;
     border-radius: 4px;
-    width: 100%;
+    cursor: pointer;
     font-size: 1rem;
+    width: 100%;
+}
+
+#btn-enviar:hover {
+    filter: brightness(0.9);
 }
 
 .escondido {
     display: none;
 }
 
-#mensagem-feedback {
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: #d4edda;
-    color: #155724;
+#mensagem-sucesso {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #c6f6d5;
+    color: #22543d;
     border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
 }
 
 footer {
     text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
+    margin-top: 30px;
+    color: #718096;
+    font-size: 0.85rem;
 }
 
-/* 📱 Responsividade - Media Queries (Subcategoria B Nível 4) */
-@media (max-width: 768px) {
-    .carta-memoria {
-        width: calc(50% - 10px); /* 2 colunas em telas menores */
-        height: 100px;
-        font-size: 0.8rem;
-    }
-    
-    header {
-        padding: 3rem 1rem 1rem 1rem;
-    }
-    
-    #toggle-dark-mode {
-        position: static;
-        margin-top: 1rem;
-        display: inline-block;
+/* 📱 Ajustes de Layout para Telas Maiores (Media Queries) */
+@media (min-width: 600px) {
+    .carta {
+        width: calc(25% - 15px); /* Divide em 4 colunas em desktops e tablets */
+        height: 160px;
+        font-size: 0.9rem;
     }
 }
