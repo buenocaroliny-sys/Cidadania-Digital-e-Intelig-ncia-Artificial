@@ -1,179 +1,189 @@
-/* Variáveis de Cores de Alta Legibilidade e Contraste */
+/* Variáveis de Cores (Identidade Tecnológica/Segurança) */
 :root {
-    --bg-primary: #f4f7f6;
+    --bg-principal: #f4f7f6;
     --bg-card: #ffffff;
-    --text-main: #2d3748;
-    --accent-color: #3182ce;
-    --accent-hover: #2b6cb0;
-    --footer-bg: #1a202c;
-    --footer-text: #edf2f7;
-    --success-bg: #c6f6d5;
-    --success-text: #22543d;
+    --texto: #1a1a1a;
+    --primaria: #0f4c81; /* Azul Segurança */
+    --secundaria: #17b890; /* Verde Validação */
+    --transicao: all 0.3s ease;
 }
 
-/* Classe do Modo Escuro (Ativada via JS) */
+/* Modo Escuro */
 body.dark-mode {
-    --bg-primary: #1a202c;
-    --bg-card: #2d3748;
-    --text-main: #edf2f7;
-    --accent-color: #63b3ed;
-    --accent-hover: #4299e1;
+    --bg-principal: #121212;
+    --bg-card: #1e1e1e;
+    --texto: #e0e0e0;
+    --primaria: #3700b3;
+    --secundaria: #03dac6;
 }
 
-/* Reset Básico */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-main);
+    background-color: var(--bg-principal);
+    color: var(--texto);
+    transition: var(--transicao);
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Layout do Cabeçalho com Flexbox */
 header {
-    background-color: var(--bg-card);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 1rem 2rem;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Botões Interativos com Efeito Hover Suave */
-.btn-accessibility {
-    background-color: var(--accent-color);
+    background-color: var(--primaria);
     color: white;
-    border: none;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+#toggle-dark-mode {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    border-radius: 4px;
+    transition: var(--transicao);
 }
 
-.btn-accessibility:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-1px);
+#toggle-dark-mode:hover {
+    background: white;
+    color: var(--primaria);
 }
 
-/* Estrutura do Conteúdo Principal */
 main {
-    max-width: 800px;
+    max-width: 900px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
 section {
-    background-color: var(--bg-card);
+    background: var(--bg-card);
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* Estilização do Formulário e Opções */
-.options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1.5rem 0;
+h2 {
+    margin-bottom: 1rem;
+    color: var(--primaria);
 }
 
-.option-label {
+/* Estilização do Jogo da Memória */
+.placar {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tabuleiro-memoria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.carta-memoria {
+    width: calc(25% - 10px);
+    height: 120px;
+    background-color: var(--primaria);
+    color: white;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 6px;
     cursor: pointer;
-    padding: 0.75rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    transition: var(--transicao);
+    user-select: none;
 }
 
-.option-label:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+.carta-memoria:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
 }
 
-.btn-submit {
+.carta-memoria.virada {
+    background-color: var(--secundaria);
+    color: #1a1a1a;
+}
+
+.carta-memoria.escondida {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Formulário */
+.campo {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input {
     width: 100%;
-    background-color: #48bb78;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: var(--primaria);
     color: white;
     border: none;
-    padding: 0.75rem;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-}
-
-.btn-submit:hover {
-    background-color: #38a169;
-}
-
-/* Feedback Dinâmico do Quiz */
-.feedback {
-    margin-top: 1.5rem;
-    padding: 1rem;
     border-radius: 4px;
-    font-weight: bold;
+    width: 100%;
+    font-size: 1rem;
 }
 
-.feedback.correct {
-    background-color: var(--success-bg);
-    color: var(--success-text);
-}
-
-.feedback.incorrect {
-    background-color: #fed7d7;
-    color: #742a2a;
-}
-
-.hidden {
+.escondido {
     display: none;
 }
 
-/* Grid de Cards de Dicas */
-.grid-tips {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+#mensagem-feedback {
     margin-top: 1rem;
+    padding: 1rem;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 4px;
 }
 
-.tip-card {
-    border-left: 4px solid var(--accent-color);
-    padding-left: 1rem;
-}
-
-/* Rodapé Estilizado */
 footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 4rem;
+    padding: 2rem;
     font-size: 0.9rem;
 }
 
-/* --- Aula 4: Responsividade Avançada via Media Queries --- */
-@media (min-width: 600px) {
-    .grid-tips {
-        flex-direction: row;
+/* 📱 Responsividade - Media Queries (Subcategoria B Nível 4) */
+@media (max-width: 768px) {
+    .carta-memoria {
+        width: calc(50% - 10px); /* 2 colunas em telas menores */
+        height: 100px;
+        font-size: 0.8rem;
     }
-    .tip-card {
-        flex: 1;
+    
+    header {
+        padding: 3rem 1rem 1rem 1rem;
+    }
+    
+    #toggle-dark-mode {
+        position: static;
+        margin-top: 1rem;
+        display: inline-block;
     }
 }
-
