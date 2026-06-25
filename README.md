@@ -1,18 +1,21 @@
-# Portal de Conscientização Comunitária: Cidadania Digital & IA
+# Portal Cidadania Digital: Combate à Desinformação e Deepfakes 🛡️
 
-## 🎯 Objetivo do Projeto
-Este projeto foi desenvolvido como parte do Plano de Recuperação Disciplinar da matéria de Educação Digital e Computação. O site atua como um portal educativo focado em ensinar a comunidade a identificar mídias manipuladas por Inteligência Artificial (Deepfakes) e mitigar os impactos da desinformação automatizada na sociedade moderna.
+Projeto final estruturado para a disciplina de Educação Digital e IA do Ensino Médio.
 
-## 🛠️ Tecnologias Utilizadas
-- **HTML5**: Estruturação semântica da página (`main`, `section`, `form`, etc).
-- **CSS3**: Estilização moderna estruturada com Flexbox e responsividade total baseada em Media Queries.
-- **JavaScript (Vanilla)**: Manipulação dinâmica do DOM para controle de acessibilidade (Modo Escuro) e validação lógica do formulário do Quiz.
+## 🎯 Objetivo Geral
+Disseminar conhecimentos cruciais sobre identificação de mídias artificiais manipuladas por Inteligência Artificial (deepfakes). O portal utiliza a gamificação por meio de um **Jogo da Memória Educativo**, onde o usuário conecta os sinais de erro técnico das IAs às suas respectivas contrapartidas explicativas.
 
-## 🤖 Prompts de IA Utilizados no Desenvolvimento
-Durante o processo de ideação e refinamento técnico, foram utilizados os seguintes comandos de IA:
-1. *"Gere uma estrutura semântica em HTML5 para um portal focado no combate de notícias falsas e deepfakes."*
-2. *"Como criar um alternador de modo escuro utilizando apenas JavaScript Vanilla modificando variáveis do root CSS?"*
-3. *"Crie regras de Media Query com Flexbox para tornar uma seção de cards empilhável em telas menores que 600px."*
+## 🛠️ Detalhes de Implementação
+- **HTML5 Semântico**: Uso estrito de divisões lógicas estruturadas (`header`, `main`, `section`, `footer` e `form`).
+- **CSS3 Flexbox**: Grid flexível autoajustável e responsivo adaptado para 2 colunas em dispositivos móveis e 4 colunas em monitores desktop usando `@media`.
+- **JavaScript Funcional**: Lógica pura encapsulada por `DOMContentLoaded` para gerenciamento do tabuleiro, contagem dinâmica de pontos e gerenciamento do Modo Escuro.
 
-## 🌐 Link de Publicação
-O projeto encontra-se publicado e funcional através do GitHub Pages.
+## 🤖 Declaração de Uso de Ferramentas de IA
+Conforme as exigências éticas da subcategoria D, o código base de ordenação aleatória e a transição lógica de reversão de cartas foram estruturados com auxílio de IA.
+
+**Prompts de Orientação Empregados:**
+1. *"Gere um algoritmo estável de embaralhamento de arrays em JavaScript baseado em Math.random."*
+2. *"Escreva CSS utilizando propriedades customizadas para permitir alternação nativa de contraste do body."*
+
+## 🏷️ Tags do Repositório
+#cidadaniadigital2026
