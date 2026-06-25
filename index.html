@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Cidadania Digital - Jogo da Memória</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- O 'defer' garante que o JS só rode após o HTML estar 100% carregado, evitando erros de console -->
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -25,7 +27,7 @@
                 <p>Pontuação: <span id="pontos">0</span> de 4 acertos</p>
             </div>
             
-            <!-- O tabuleiro flexbox receberá as cartas geradas pelo script.js -->
+            <!-- Tabuleiro onde as cartas serão injetadas pelo JavaScript -->
             <div id="tabuleiro-memoria"></div>
         </section>
 
@@ -52,6 +54,5 @@
         <p>&copy; 2026 Portal de Conscientização Comunitária. Conteúdo 100% Autoral.</p>
     </footer>
 
-    <script src="js/script.js"></script>
 </body>
 </html>
