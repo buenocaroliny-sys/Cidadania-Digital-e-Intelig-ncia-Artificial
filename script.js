@@ -1,130 +1,102 @@
-// Banco de dados contendo pares informativos sobre IA e Deepfakes
-const dadosCartas = [
-    { id: 1, texto: "Sinal: Rosto que não pisca naturalmente" },
-    { id: 1, texto: "Solução: IA tem dificuldade de simular piscadas biológicas" },
-    { id: 2, texto: "Sinal: Voz sem respiração ou pausas" },
-    { id: 2, texto: "Solução: Analise falhas mecânicas no ritmo do áudio" },
-    { id: 3, texto: "Sinal: Sombra torta ou borda do rosto borrada" },
-    { id: 3, texto: "Solução: Aproxime a imagem para checar defeitos nos pixels" },
-    { id: 4, texto: "Sinal: Texto alarmista pedindo compartilhamento rápido" },
-    { id: 4, texto: "Solução: Desconfie e consulte agências de checagem confiáveis" }
+// Dados do Jogo (Sinais de Alerta e Soluções correspondentes)
+const dadosJogo = [
+    { id: 1, alerta: "Piscadas de olhos não naturais ou ausentes.", solucao: "Observe atentamente os movimentos faciais e reflexos de luz nos olhos." },
+    { id: 2, alerta: "Áudio com roboticidade ou dessincronizado.", solucao: "Verifique se a fala bate perfeitamente com o movimento dos lábios." },
+    { id: 3, alerta: "Bordas da face borradas ou sombras estranhas.", solucao: "Analise o contorno do rosto e falhas em cortes de transição de vídeo." },
+    { id: 4, alerta: "Inconsistências no fundo do cenário.", solucao: "Repare se objetos se movem ou entortam magicamente atrás da pessoa." }
 ];
 
-let primeiraCarta = null;
-let segundaCarta = null;
-let bloqueiaTabuleiro = false;
-let acertosTotais = 0;
+let itemAlertaSelecionado = null;
+let itemSolucaoSelecionada = null;
+let acertos = 0;
 
-// Escuta obrigatória que previne que o código execute antes do HTML ser carregado
-document.addEventListener("DOMContentLoaded", () => {
-    const tabuleiro = document.getElementById("tabuleiro-memoria");
-    const mostradorPontos = document.getElementById("pontos");
-    const botaoModoEscuro = document.getElementById("toggle-dark-mode");
-    const formulario = document.getElementById("form-contato");
-    const containerFeedback = document.getElementById("mensagem-sucesso");
+// Inicializar Elementos na Tela
+function iniciarJogo() {
+    const colAlertas = document.getElementById("coluna-alertas");
+    const colSolucoes = document.getElementById("coluna-solucoes");
 
-    // Função de Embaralhar Pura (Fisher-Yates)
-    function embaralhar(array) {
-        return array.sort(() => Math.random() - 0.5);
-    }
+    // Embaralhar as colunas para o jogo não ficar na ordem direta
+    const alertasEmbaralhados = [...dadosJogo].sort(() => Math.random() - 0.5);
+    const solucoesEmbaralhadas = [...dadosJogo].sort(() => Math.random() - 0.5);
 
-    // Geração Dinâmica dos Elementos no DOM (Subcategoria A Nível 4)
-    function montarTabuleiro() {
-        const cartasEmbaralhadas = embaralhar([...dadosCartas]);
-        tabuleiro.innerHTML = "";
+    alertasEmbaralhados.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item-jogo";
+        div.innerText = item.alerta;
+        div.dataset.id = item.id;
+        div.onclick = () => selecionarAlerta(div);
+        colAlertas.appendChild(div);
+    });
 
-        cartasEmbaralhadas.forEach(item => {
-            const elementoCarta = document.createElement("div");
-            elementoCarta.classList.add("carta");
-            elementoCarta.dataset.id = item.id;
-            elementoCarta.dataset.conteudo = item.texto;
-            elementoCarta.textContent = "🔍 Identificar Fraude";
+    solucoesEmbaralhadas.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item-jogo";
+        div.innerText = item.solucao;
+        div.dataset.id = item.id;
+        div.onclick = () => selecionarSolucao(div);
+        colSolucoes.appendChild(div);
+    });
+}
 
-            elementoCarta.addEventListener("click", virarCarta);
-            tabuleiro.appendChild(elementoCarta);
-        });
-    }
+function selecionarAlerta(elemento) {
+    if (elemento.classList.contains("correto")) return;
+    document.querySelectorAll("#coluna-alertas .item-jogo").forEach(el => el.classList.remove("selecionado"));
+    elemento.classList.add("selecionado");
+    itemAlertaSelecionado = elemento;
+    verificarCombinacao();
+}
 
-    function virarCarta() {
-        if (bloqueiaTabuleiro) return;
-        if (this === primeiraCarta) return;
-        if (this.classList.contains("resolvida") || this.classList.contains("virada")) return;
+function selecionarSolucao(elemento) {
+    if (elemento.classList.contains("correto")) return;
+    document.querySelectorAll("#coluna-solucoes .item-jogo").forEach(el => el.classList.remove("selecionado"));
+    elemento.classList.add("selecionado");
+    itemSolucaoSelecionada = elemento;
+    verificarCombinacao();
+}
 
-        this.classList.add("virada");
-        this.textContent = this.dataset.conteudo;
-
-        if (!primeiraCarta) {
-            primeiraCarta = this;
-            return;
-        }
-
-        segundaCarta = this;
-        verificarCombinacao();
-    }
-
-    function verificarCombinacao() {
-        const combinou = primeiraCarta.dataset.id === segundaCarta.dataset.id;
-
-        if (combinou) {
-            marcarComoResolvidas();
+function verificarCombinacao() {
+    if (itemAlertaSelecionado && itemSolucaoSelecionada) {
+        if (itemAlertaSelecionado.dataset.id === itemSolucaoSelecionada.dataset.id) {
+            // Se acertou o par
+            itemAlertaSelecionado.classList.remove("selecionado");
+            itemSolucaoSelecionada.classList.remove("selecionado");
+            itemAlertaSelecionado.classList.add("correto");
+            itemSolucaoSelecionada.classList.add("correto");
+            acertos++;
+            document.getElementById("pontos").innerText = acertos;
         } else {
-            desvirarCartas();
-        }
-    }
-
-    function marcarComoResolvidas() {
-        primeiraCarta.classList.add("resolvida");
-        segundaCarta.classList.add("resolvida");
-        
-        acertosTotais++;
-        mostradorPontos.textContent = acertosTotais;
-
-        limparSelecao();
-
-        if (acertosTotais === 4) {
+            // Se errou, remove o destaque visual após breve tempo
+            const a = itemAlertaSelecionado;
+            const s = itemSolucaoSelecionada;
             setTimeout(() => {
-                alert("Excelente trabalho! Você identificou todas as ameaças digitais.");
-            }, 300);
+                a.classList.remove("selecionado");
+                s.classList.remove("selecionado");
+            }, 500);
         }
+        itemAlertaSelecionado = null;
+        itemSolucaoSelecionada = null;
     }
+}
 
-    function desvirarCartas() {
-        bloqueiaTabuleiro = true;
-
-        setTimeout(() => {
-            primeiraCarta.classList.remove("virada");
-            segundaCarta.classList.remove("virada");
-            primeiraCarta.textContent = "🔍 Identificar Fraude";
-            segundaCarta.textContent = "🔍 Identificar Fraude";
-
-            limparSelecao();
-        }, 1500);
+// Controle do Modo Escuro
+const btnEscuro = document.getElementById("btn-escuro");
+btnEscuro.addEventListener("click", () => {
+    const temaAtual = document.documentElement.getAttribute("data-theme");
+    if (temaAtual === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
     }
-
-    function limparSelecao() {
-        primeiraCarta = null;
-        segundaCarta = null;
-        bloqueiaTabuleiro = false;
-    }
-
-    // Funcionalidade de Acessibilidade
-    if (botaoModoEscuro) {
-        botaoModoEscuro.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-        });
-    }
-
-    // Script Dinâmico de Formulário
-    if (formulario && containerFeedback) {
-        formulario.addEventListener("submit", (evento) => {
-            evento.preventDefault();
-            const nome = document.getElementById("nome-usuario").value;
-            containerFeedback.textContent = `Agradecemos seu envio, ${nome}! Analisaremos o endereço informado para neutralizar o avanço desta desinformação.`;
-            containerFeedback.classList.remove("escondido");
-            formulario.reset();
-        });
-    }
-
-    // Inicialização do Jogo
-    montarTabuleiro();
 });
+
+// Envio do Formulário
+document.getElementById("form-alerta").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nome = document.getElementById("nome").value;
+    const link = document.getElementById("link").value;
+    alert(`Obrigado ${nome}! O link para a mídia suspeita foi enviado com sucesso.`);
+    document.getElementById("form-alerta").reset();
+});
+
+// Rodar o jogo ao carregar a página
+window.onload = iniciarJogo;
