@@ -1,105 +1,111 @@
-/* --- Variáveis de Cores (Paleta de Design) --- */
+/* --- Variáveis de Ambiente (Tema Claro Padrão) --- */
 :root {
-    --bg-primary: #f4f7f6;
+    --bg-body: #f4f6f9;
     --bg-card: #ffffff;
-    --text-color: #333333;
-    --accent-color: #007bff;
-    --success-color: #28a745;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --accent: #1a5276;
+    --button-bg: #2ecc71;
 }
 
-/* Classe aplicada via JavaScript para o Modo Escuro */
-.dark-theme {
-    --bg-primary: #121212;
+/* --- Tema Escuro (Ativado via JS) --- */
+body.dark-theme {
+    --bg-body: #121212;
     --bg-card: #1e1e1e;
-    --text-color: #f4f7f6;
-    --accent-color: #37b7ff;
+    --text-main: #ffffff;
+    --text-muted: #aaaaaa;
+    --accent: #3498db;
+    --button-bg: #27ae60;
 }
 
-/* --- Estilos Gerais --- */
+/* --- Estilos de Layout --- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
 }
 
-header, footer {
-    background-color: var(--bg-card);
+header {
+    background-color: var(--accent);
+    color: white;
     text-align: center;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 40px 20px;
 }
+
+header h1 { margin: 0 0 10px 0; }
 
 main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
-section {
-    margin-bottom: 40px;
-    background: var(--bg-card);
-    padding: 20px;
+.card-section {
+    background-color: var(--bg-card);
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
 }
 
-/* --- Layout Avançado com Flexbox (Cards) --- */
-.cards-container {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+.card-section h2 {
+    color: var(--accent);
+    margin-top: 0;
 }
 
-.card {
-    flex: 1;
-    background-color: var(--bg-primary);
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid var(--accent-color);
-}
-
-/* --- Formulários e Botões --- */
-#quiz-form {
+/* --- Elementos de Formulário --- */
+.input-group {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
-label {
-    display: block;
-    margin: 10px 0;
+input[type="text"], input[type="url"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
     cursor: pointer;
 }
 
 button {
-    background-color: var(--accent-color);
+    background-color: var(--button-bg);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px 20px;
     font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.9;
+button:hover { opacity: 0.9; }
+
+#toggle-dark-mode {
+    background-color: transparent;
+    border: 2px solid white;
+    margin-top: 15px;
 }
 
-#quiz-result {
+#quiz-result, #alert-result {
     margin-top: 15px;
     font-weight: bold;
 }
 
-/* --- Aula 4: Responsividade (Media Queries) --- */
-@media (max-width: 768px) {
-    .cards-container {
-        flex-direction: column; /* Transforma linha em coluna em telas menores */
-    }
-    
-    main {
-        padding: 10px;
-    }
+footer {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 20px;
+    font-size: 0.9rem;
 }
