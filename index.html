@@ -3,66 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VerificaIA - Cidadania Digital e IA</title>
+    <title>Cidadania Digital & IA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>VerificaIA</h1>
-        <p>Conscientização contra Deepfakes e Desinformação</p>
-        <button id="toggle-dark-mode">Alternar Modo Escuro</button>
+        <h1>Cidadania Digital & IA</h1>
+        <p>Aprenda a detectar Deepfakes e combater a desinformação!</p>
+        <button id="toggle-dark-mode">Acessibilidade: Modo Escuro</button>
     </header>
 
     <main>
-        <!-- Seção de Introdução -->
-        <section id="introducao">
-            <h2>O Desafio da Era Digital</h2>
-            <p>Com o avanço da Inteligência Artificial, a criação de mídias falsas hiper-realistas (deepfakes) tornou-se um desafio para a democracia e a verdade factual. Entender o funcionamento dessas tecnologias é o primeiro passo para exercer a cidadania digital.</p>
-        </section>
-
-        <!-- Seção de Dicas Educativas -->
-        <section id="como-identificar">
-            <h2>Como Identificar uma Deepfake?</h2>
-            <div class="cards-container">
-                <div class="card">
-                    <h3>Piscar de Olhos</h3>
-                    <p>Muitas ferramentas de IA falham em reproduzir o ritmo natural do piscar de olhos humano.</p>
-                </div>
-                <div class="card">
-                    <h3>Sincronia de Áudio</h3>
-                    <p>Preste atenção se os movimentos dos lábios coincidem perfeitamente com as palavras faladas.</p>
-                </div>
-                <div class="card">
-                    <h3>Falhas nas Bordas</h3>
-                    <p>Bordas borradas ao redor do rosto, cabelo ou orelhas costumam indicar manipulação digital.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Interativa: Quiz -->
-        <section id="quiz-section">
-            <h2>Quiz Anti-Desinformação</h2>
-            <p>Teste sua habilidade em detectar notícias e mídias falsas:</p>
+        <!-- Seção do Quiz (Substituindo o Jogo) -->
+        <section class="card-section">
+            <h2>Detetive Digital: O Quiz</h2>
+            <p>Se você receber um vídeo bombástico de um político falando algo absurdo, mas a voz e o rosto parecem reais, o que você faz?</p>
             
             <form id="quiz-form">
-                <div class="quiz-question">
-                    <p>1. Se um vídeo parece absurdo, mas a voz e o rosto são de uma autoridade, qual o primeiro passo?</p>
-                    <label>
-                        <input type="radio" name="q1" value="errada"> Compartilhar imediatamente para alertar os amigos.
-                    </label>
-                    <label>
-                        <input type="radio" name="q1" value="correta"> Cruzar as informações com agências de checagem confiáveis.
-                    </label>
-                </div>
-                <button type="submit">Verificar Resposta</button>
+                <label class="quiz-option">
+                    <input type="radio" name="quiz-q1" value="errado">
+                    <span>Compartilho na hora para alertar meus conhecidos.</span>
+                </label>
+                <label class="quiz-option">
+                    <input type="radio" name="quiz-q1" value="correto">
+                    <span>Não compartilho e procuro o vídeo em portais de checagem confiáveis.</span>
+                </label>
+                <button type="submit" id="btn-quiz">Verificar Resposta</button>
             </form>
             <div id="quiz-result"></div>
+        </section>
+
+        <!-- Seção do Formulário de Alerta -->
+        <section class="card-section">
+            <h2>Canais de Proteção Coletiva</h2>
+            <p>Encontrou um conteúdo suspeito na internet? Envie o link para análise de nossa comunidade.</p>
+            
+            <form id="alert-form">
+                <div class="input-group">
+                    <label for="user-name">Seu Nome:</label>
+                    <input type="text" id="user-name" placeholder="Ex: Carolin" required>
+                </div>
+                <div class="input-group">
+                    <label for="media-link">Link da Mídia Suspeita:</label>
+                    <input type="url" id="media-link" placeholder="https://exemplo.com" required>
+                </div>
+                <button type="submit">Registrar Alerta</button>
+            </form>
+            <div id="alert-result"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Projeto Cidadania Digital. Desenvolvido para fins educacionais.</p>
+        <p>&copy; 2026 Portal de Conscientização Comunitária. Conteúdo 100% Autoral.</p>
     </footer>
 
     <script src="script.js"></script>
