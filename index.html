@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cidadania Digital & IA</title>
-    <!-- Favicon e CSS corrigidos com caminhos relativos -->
+    <!-- Links corrigidos sem a barra inicial para evitar o erro 404 -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,35 +13,45 @@
     <header>
         <h1>Cidadania Digital & IA</h1>
         <p>Aprenda a detectar Deepfakes e combater a desinformação jogando!</p>
-        <button class="btn-acessibilidade">Acessibilidade: Modo Escuro</button>
+        <button id="btn-escuro">Acessibilidade: Modo Escuro</button>
     </header>
 
     <main>
-        <!-- Seção do Jogo -->
-        <section class="jogo-container">
+        <section class="jogo-secao">
             <h2>Detetive Digital: O Desafio</h2>
             <p>Vídeos falsos e áudios manipulados por Inteligência Artificial (deepfakes) espalham mentiras rapidamente. Encontre os pares corretos combinando o <strong>Sinal de Alerta</strong> com a sua respectiva <strong>Solução ou Explicação</strong>.</p>
-            <p class="pontuacao">Pontuação: <span id="acertos">0</span> de 4 acertos</p>
             
-            <!-- Os elementos do jogo serão gerados ou controlados via JS -->
-            <div id="tabuleiro-jogo"></div>
+            <div class="placar">
+                Pontuação: <span id="pontos">0</span> de 4 acertos
+            </div>
+
+            <!-- Área onde o jogo de ligar/combinar vai aparecer -->
+            <div class="container-colunas">
+                <div class="coluna" id="coluna-alertas">
+                    <h3>Sinais de Alerta</h3>
+                    <!-- Gerado dinamicamente via JS -->
+                </div>
+                <div class="coluna" id="coluna-solucoes">
+                    <h3>Soluções / Explicações</h3>
+                    <!-- Gerado dinamicamente via JS -->
+                </div>
+            </div>
         </section>
 
-        <!-- Seção do Formulário -->
-        <section class="formulario-container">
+        <section class="form-secao">
             <h2>Canais de Proteção Coletiva</h2>
             <p>Encontrou um conteúdo suspeito na internet? Envie o link para análise de nossa comunidade.</p>
             
             <form id="form-alerta">
-                <div class="campo">
+                <div class="grupo-campo">
                     <label for="nome">Seu Nome:</label>
-                    <input type="text" id="nome" placeholder="Ex: Maria Silva">
+                    <input type="text" id="nome" placeholder="Ex: Maria Silva" required>
                 </div>
-                <div class="campo">
+                <div class="grupo-campo">
                     <label for="link">Link da Mídia Suspeita:</label>
-                    <input type="url" id="link" placeholder="https://exemplo.com">
+                    <input type="url" id="link" placeholder="https://exemplo.com" required>
                 </div>
-                <button type="submit">Registrar Alerta</button>
+                <button type="submit" id="btn-registrar">Registrar Alerta</button>
             </form>
         </section>
     </main>
@@ -50,7 +60,7 @@
         <p>&copy; 2026 Portal de Conscientização Comunitária. Conteúdo 100% Autoral.</p>
     </footer>
 
-    <!-- JavaScript corrigido com caminho relativo no final do body -->
+    <!-- Script corrigido no final do arquivo -->
     <script src="print.js"></script>
 </body>
 </html>
