@@ -3,50 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Cidadania Digital - Jogo da Memória</title>
-    <!-- Links corrigidos apontando para as subpastas corretas -->
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <title>Cidadania Digital & IA</title>
+    <!-- Favicon e CSS corrigidos com caminhos relativos -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <h1>Cidadania Digital & IA</h1>
         <p>Aprenda a detectar Deepfakes e combater a desinformação jogando!</p>
-        <button id="toggle-dark-mode" aria-label="Alternar tema de cores">Acessibilidade: Modo Escuro</button>
+        <button class="btn-acessibilidade">Acessibilidade: Modo Escuro</button>
     </header>
 
     <main>
-        <section id="introducao">
+        <!-- Seção do Jogo -->
+        <section class="jogo-container">
             <h2>Detetive Digital: O Desafio</h2>
             <p>Vídeos falsos e áudios manipulados por Inteligência Artificial (deepfakes) espalham mentiras rapidamente. Encontre os pares corretos combinando o <strong>Sinal de Alerta</strong> com a sua respectiva <strong>Solução ou Explicação</strong>.</p>
-        </section>
-
-        <section id="jogo">
-            <div class="placar">
-                <p>Pontuação: <span id="pontos">0</span> de 4 acertos</p>
-            </div>
+            <p class="pontuacao">Pontuação: <span id="acertos">0</span> de 4 acertos</p>
             
-            <!-- Tabuleiro flexbox que receberá os elementos criados no JavaScript -->
-            <div id="tabuleiro-memoria"></div>
+            <!-- Os elementos do jogo serão gerados ou controlados via JS -->
+            <div id="tabuleiro-jogo"></div>
         </section>
 
-        <section id="denuncia">
+        <!-- Seção do Formulário -->
+        <section class="formulario-container">
             <h2>Canais de Proteção Coletiva</h2>
             <p>Encontrou um conteúdo suspeito na internet? Envie o link para análise de nossa comunidade.</p>
             
-            <form id="form-contato">
-                <div class="grupo-campo">
-                    <label for="nome-usuario">Seu Nome:</label>
-                    <input type="text" id="nome-usuario" required placeholder="Ex: Maria Silva">
+            <form id="form-alerta">
+                <div class="campo">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" placeholder="Ex: Maria Silva">
                 </div>
-                <div class="grupo-campo">
-                    <label for="link-suspeito">Link da Mídia Suspeita:</label>
-                    <input type="url" id="link-suspeito" required placeholder="https://exemplo.com">
+                <div class="campo">
+                    <label for="link">Link da Mídia Suspeita:</label>
+                    <input type="url" id="link" placeholder="https://exemplo.com">
                 </div>
-                <button type="submit" id="btn-enviar">Registrar Alerta</button>
+                <button type="submit">Registrar Alerta</button>
             </form>
-            <p id="mensagem-sucesso" class="escondido"></p>
         </section>
     </main>
 
@@ -54,5 +50,7 @@
         <p>&copy; 2026 Portal de Conscientização Comunitária. Conteúdo 100% Autoral.</p>
     </footer>
 
+    <!-- JavaScript corrigido com caminho relativo no final do body -->
+    <script src="print.js"></script>
 </body>
 </html>
