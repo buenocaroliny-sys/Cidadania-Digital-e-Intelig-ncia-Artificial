@@ -1,21 +1,17 @@
-# Portal Cidadania Digital: Combate à Desinformação e Deepfakes 🛡️
+# Portal VerificaIA 🌐
 
-Projeto final estruturado para a disciplina de Educação Digital e IA do Ensino Médio.
+## Descrição do Projeto
+Este site é um portal interativo focado na conscientização sobre **Cidadania Digital e Inteligência Artificial**, desenvolvido especificamente para educar a comunidade escolar sobre os riscos das mídias manipuladas (*deepfakes*) e a disseminação automatizada de notícias falsas.
 
-## 🎯 Objetivo Geral
-Disseminar conhecimentos cruciais sobre identificação de mídias artificiais manipuladas por Inteligência Artificial (deepfakes). O portal utiliza a gamificação por meio de um **Jogo da Memória Educativo**, onde o usuário conecta os sinais de erro técnico das IAs às suas respectivas contrapartidas explicativas.
+## Recursos Implementados
+- **HTML Semântico:** Estrutura limpa utilizando as tags adequadas para acessibilidade e SEO.
+- **Design Responsivo:** Interface adaptada para smartphones e desktops via CSS Flexbox e Media Queries.
+- **Interatividade:** Sistema de validação de respostas (Quiz) e alternador de acessibilidade visual (Modo Escuro) programados puramente em JavaScript.
 
-## 🛠️ Detalhes de Implementação
-- **HTML5 Semântico**: Uso estrito de divisões lógicas estruturadas (`header`, `main`, `section`, `footer` e `form`).
-- **CSS3 Flexbox**: Grid flexível autoajustável e responsivo adaptado para 2 colunas em dispositivos móveis e 4 colunas em monitores desktop usando `@media`.
-- **JavaScript Funcional**: Lógica pura encapsulada por `DOMContentLoaded` para gerenciamento do tabuleiro, contagem dinâmica de pontos e gerenciamento do Modo Escuro.
+## Histórico de Prompts de IA Utilizados (Para fins de auditoria acadêmica)
+1. *Prompt para Ideação:* "Gere uma lista de dicas simples para estudantes identificarem vídeos manipulados por IA (deepfakes)."
+2. *Prompt para Engenharia de Layout:* "Crie um layout em CSS Flexbox que transforme três cards horizontais em verticais quando a tela for menor que 768px."
+3. *Prompt para Lógica JS:* "Escreva uma função em JavaScript para validar um formulário de quiz de escolha única e exibir a resposta de forma dinâmica na tela sem dar refresh."
 
-## 🤖 Declaração de Uso de Ferramentas de IA
-Conforme as exigências éticas da subcategoria D, o código base de ordenação aleatória e a transição lógica de reversão de cartas foram estruturados com auxílio de IA.
-
-**Prompts de Orientação Empregados:**
-1. *"Gere um algoritmo estável de embaralhamento de arrays em JavaScript baseado em Math.random."*
-2. *"Escreva CSS utilizando propriedades customizadas para permitir alternação nativa de contraste do body."*
-
-## 🏷️ Tags do Repositório
-#cidadaniadigital2026
+---
+Tag Oficial do Projeto: `#cidadaniadigital2026`
