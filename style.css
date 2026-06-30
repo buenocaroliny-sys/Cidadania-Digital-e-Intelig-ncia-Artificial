@@ -1,133 +1,99 @@
-/* Paleta de Cores Focada em Tecnologia e Segurança */
+/* Estilos Gerais */
 :root {
-    --cor-fundo-principal: #f0f4f8;
-    --cor-fundo-bloco: #ffffff;
-    --cor-texto: #1a202c;
-    --cor-primaria: #1a365d; 
-    --cor-secundaria: #2b6cb0; 
-    --cor-sucesso: #2f855a; 
-    --cor-carta-frente: #4a5568;
+    --bg-cor: #ffffff;
+    --texto-cor: #222222;
+    --primaria: #0066cc;
+    --borda-cor: #cccccc;
+    --card-bg: #f9f9f9;
 }
 
-/* Ativação do Modo Escuro pelo Botão JS */
-body.dark-mode {
-    --cor-fundo-principal: #1a202c;
-    --cor-fundo-bloco: #2d3748;
-    --cor-texto: #edf2f7;
-    --cor-primaria: #90cdf4;
-    --cor-secundaria: #63b3ed;
-    --cor-sucesso: #48bb78;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+[data-theme="dark"] {
+    --bg-cor: #1a1a1a;
+    --texto-cor: #f0f0f0;
+    --primaria: #3399ff;
+    --borda-cor: #444444;
+    --card-bg: #2d2d2d;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor-fundo-principal);
-    color: var(--cor-texto);
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-cor);
+    color: var(--texto-cor);
+    margin: 0;
+    padding: 20px;
     line-height: 1.6;
-    padding-bottom: 40px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s, color 0.3s;
 }
 
-header {
-    background-color: var(--cor-primaria);
-    color: #ffffff;
-    padding: 30px 20px;
-    text-align: center;
+header, footer {
+    border-bottom: 2px solid var(--borda-cor);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
 }
 
-header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+footer {
+    border-top: 2px solid var(--borda-cor);
+    border-bottom: none;
+    margin-top: 50px;
+    font-size: 14px;
 }
 
-#toggle-dark-mode {
-    margin-top: 15px;
-    padding: 8px 16px;
+#btn-escuro {
+    padding: 8px 12px;
     cursor: pointer;
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
+    background: var(--primaria);
+    color: white;
+    border: none;
     border-radius: 4px;
-    font-weight: bold;
-    transition: background 0.3s ease;
 }
 
-#toggle-dark-mode:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 0 15px;
-}
-
-section {
-    background-color: var(--cor-fundo-bloco);
-    margin-bottom: 25px;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    color: var(--cor-secundaria);
-    margin-bottom: 15px;
-}
-
+/* Estrutura do Jogo */
 .placar {
-    text-align: center;
-    font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin: 15px 0;
 }
 
-/* Tabuleiro - Técnicas Flexbox (Subcategoria A) */
-#tabuleiro-memoria {
+.container-colunas {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 15px;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
-/* Cartas Interativas */
-.carta {
-    width: calc(50% - 15px); /* Layout mobile: duas colunas */
-    height: 140px;
-    background-color: var(--cor-carta-frente);
-    color: #ffffff;
-    border-radius: 6px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.coluna {
+    flex: 1;
+    background: var(--card-bg);
     padding: 15px;
-    font-size: 0.95rem;
-    font-weight: bold;
+    border: 1px solid var(--borda-cor);
+    border-radius: 6px;
+}
+
+.item-jogo {
+    padding: 12px;
+    margin: 10px 0;
+    background: var(--bg-cor);
+    border: 2px solid var(--borda-cor);
+    border-radius: 4px;
+    cursor: pointer;
     user-select: none;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: 0.2s;
 }
 
-.carta:hover {
-    transform: scale(1.02);
+.item-jogo:hover {
+    border-color: var(--primaria);
 }
 
-.carta.virada {
-    background-color: var(--cor-secundaria);
+.item-jogo.selecionado {
+    background: #e6f2ff;
+    border-color: var(--primaria);
+    color: #000;
 }
 
-.carta.resolvida {
-    background-color: var(--cor-sucesso);
-    cursor: default;
-    transform: none;
+.item-jogo.correto {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    cursor: not-allowed;
 }
 
 /* Formulário */
@@ -135,59 +101,31 @@ h2 {
     margin-bottom: 15px;
 }
 
-label {
+.grupo-campo label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-input {
+.grupo-campo input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #cbd5e0;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid var(--borda-cor);
     border-radius: 4px;
-    background-color: var(--cor-fundo-principal);
-    color: var(--cor-texto);
+    background: var(--bg-cor);
+    color: var(--texto-cor);
 }
 
-#btn-enviar {
-    background-color: var(--cor-secundaria);
+#btn-registrar {
+    padding: 10px 20px;
+    background: #28a745;
     color: white;
-    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
-    width: 100%;
-    font-weight: bold;
 }
 
-.escondido {
-    display: none;
-}
-
-#mensagem-sucesso {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #c6f6d5;
-    color: #22543d;
-    border-radius: 4px;
-    font-weight: bold;
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    margin-top: 30px;
-    color: #718096;
-    font-size: 0.85rem;
-}
-
-/* Responsividade Avançada via Media Queries (Subcategoria B) */
-@media (min-width: 600px) {
-    .carta {
-        width: calc(25% - 15px); /* Transforma em 4 colunas em telas maiores */
-        height: 160px;
-        font-size: 0.9rem;
-    }
+#btn-registrar:hover {
+    background: #218838;
 }
